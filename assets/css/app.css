@@ -1,0 +1,27 @@
+.icon-carac {
+  background-image: url('~assets/caracs.png');
+  width: 25px;
+  height: 25px;
+  border: solid black 1px;
+}
+.neutre {
+  background-position-y: 0px;
+}
+.resistance {
+  background-position-y: 30px;
+}
+.neutre {
+  background-position-y: 0px;
+}
+.neutre {
+  background-position-y: 0px;
+}
+.neutre {
+  background-position-y: 0px;
+}
+.neutre {
+  background-position-y: 0px;
+}
+.neutre {
+  background-position-y: 0px;
+}
