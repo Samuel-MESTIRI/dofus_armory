@@ -32,6 +32,37 @@ export default {
       searchMode: false
     }
   },
+  async mounted() {
+    // this.allItems = await this.getWeapons()
+    // console.log('la reponse laa:', this.allItems)
+    // console.log(this.$store.getters['items/getHello'])
+    // this.$store.dispatch('items/addMore')
+    // console.log(this.$store.getters['items/getHello'])
+
+
+    await this.getAllData()
+    console.log(this.$store.state.items)
+  },
+  methods: {
+    getAllData() {
+      Promise.all([
+        this.$axios.$get('https://fr.dofus.dofapi.fr/equipments'),
+        this.$axios.$get('https://fr.dofus.dofapi.fr/weapons'),
+        this.$axios.$get('https://fr.dofus.dofapi.fr/sets'),
+        this.$axios.$get('https://fr.dofus.dofapi.fr/pets'),
+        this.$axios.$get('https://fr.dofus.dofapi.fr/mounts'),
+      ]).then((response) => {
+        const items = {
+          equipments: response[0],
+          weapons: response[1],
+          sets: response[2],
+          pets: response[3],
+          mounts: response[4],
+        }
+        this.$store.commit('items/loadItems', items)
+      });
+    }
+  },
 }
 </script>
 

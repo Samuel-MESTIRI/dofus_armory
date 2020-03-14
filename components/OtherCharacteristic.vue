@@ -3,7 +3,7 @@
     <article>
       <h3 class="h5 mb-4">Caractérisque principale</h3>
 
-      <div v-for="i in 5" :key="i" class="d-flex justify-content-between border">
+      <div v-for="i in 5" :key="i" :class="i%2 == 0 ? 'bg-danger' : '' " class="d-flex justify-content-between">
         <div class="d-flex">
           <div class="icon-carac vita-2 position-relative top-3"></div>
           <div>Vital</div>

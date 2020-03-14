@@ -42,7 +42,13 @@ export default {
   modules: [
     // Doc: https://bootstrap-vue.js.org
     'bootstrap-vue/nuxt',
+    // https://axios.nuxtjs.org/setup
+    '@nuxtjs/axios',
   ],
+
+  axios: {
+    // proxyHeaders: false
+  },
   /*
   ** Build configuration
   */
