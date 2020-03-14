@@ -1,10 +1,13 @@
 <template>
   <div>
     <Navbar />  
+    <button @click="searchMode = !searchMode">CHANGE</button>
     <div class="row">
-      <MainCharacteristic />  
-      <StuffPresentation />
-      <OtherCharacteristic />
+      <div class="offset-1"></div>
+      <MainCharacteristic v-if="!searchMode" />  
+      <StuffPresentation :search-mode="searchMode" />
+      <OtherCharacteristic v-if="!searchMode" />
+      <SearchPage v-if="searchMode" />
     </div>
   </div>
 </template>
@@ -14,13 +17,21 @@ import Navbar from '~/components/Navbar'
 import MainCharacteristic from '~/components/MainCharacteristic'
 import StuffPresentation from '~/components/StuffPresentation'
 import OtherCharacteristic from '~/components/OtherCharacteristic'
+import SearchPage from '~/components/SearchPage'
+
 export default {
   components: {
     Navbar,
     MainCharacteristic,
     StuffPresentation,
-    OtherCharacteristic
-  }
+    OtherCharacteristic,
+    SearchPage
+  },
+  data() {
+    return {
+      searchMode: false
+    }
+  },
 }
 </script>
 

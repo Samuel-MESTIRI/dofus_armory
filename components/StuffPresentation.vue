@@ -1,22 +1,58 @@
 <template>
-  <section class="col-6 box mx-2 mt-4 p-4">
-    <article class="d-flex justify-content-between mb-4">
-      <button class="btn btn-success p-0">perso</button>
-      <input id="input-level" class="rounded border border-grey p-2" type="text" value="200" maxlength="3">
-      <input id="input-name" class="rounded border border-grey p-2" type="text" maxlength="100">
-      <button class="btn btn-success p-0">copier</button>
-    </article>
-    <article>
+  <section :class="!searchMode ? 'col-6' : 'col-3'" class="box mx-2 mt-4 p-4">
+
+    <StuffParameter :search-mode="searchMode" />
+
+    <article class="row">
+
+      <div :class="collumnSize" class="d-flex flex-column justify-content-between">
+        <ItemLocation v-for="i in 6" :key="i" :item-width="75" :class="marginItem" />
+      </div>
+
+      <div :class="collumnSize" class="d-flex flex-column justify-content-between">
+        <ItemLocation v-for="i in 5" :key="i" :item-width="85" :class="marginItem" />
+      </div>
+
+      <div v-if="!searchMode" class="col-6">
+        <img src="~/assets/image-center.png"  alt="image du centre" width="100%">
+      </div>
       
+      <div :class="collumnSize" class="d-flex flex-column justify-content-between">
+        <ItemLocation v-for="i in 5" :key="i" :item-width="85" :class="marginItem" />
+      </div>
     </article>
+
   </section>
 </template>
 
-<style>
-  #input-level {
-    width: 50px;
+<script>
+import StuffParameter from '~/components/StuffPresentation/StuffParameter'
+import ItemLocation from '~/components/StuffPresentation/ItemLocation'
+
+export default {
+  components: {
+    StuffParameter,
+    ItemLocation
+  },
+  props: {
+    searchMode: {
+      type: Boolean,
+      required: true
+    }
+  },
+  computed: {
+    collumnSize() {
+      return this.searchMode ? 'col-4 mb-3' : 'col-2'
+    },
+    marginItem() {
+      return this.searchMode ? 'mb-3' : ''
+    }
   }
-  #input-name {
-    width: 70%;
+}
+</script>
+
+<style scoped>
+  .border-size-2 {
+    border-width: 2px !important;
   }
 </style>
