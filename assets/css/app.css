@@ -1,0 +1,108 @@
+.icon-carac {
+  background-image: url('~assets/caracs.png');
+  background-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+.neutre {
+  background-position-y: 0px;
+}
+.resistance {
+  background-position-y: 26px;
+}
+.level {
+  background-position-y: 59px;
+}
+.ret-pm {
+  background-position-y: 93px;
+}
+.ret-pa {
+  background-position-y: 129px;
+}
+.dmg-crit {
+  background-position-y: 170px;
+}
+.res-crit {
+  background-position-y: 210px;
+}
+.puissance {
+  background-position-y: 286px;
+}
+.esquive-pa {
+  background-position-y: 323px;
+}
+.esquive-pm {
+  background-position-y: 363px;
+}
+.soin {
+  background-position-y: 405px;
+}
+.vita-1 {
+  background-position-y: 445px;
+}
+.dmg-pousse {
+  background-position-y: 482px;
+}
+.res-pousse {
+  background-position-y: 517px;
+}
+.renvoi-dmg {
+  background-position-y: 549px;
+}
+.bouclier {
+  background-position-y: 583px;
+}
+.dmg-piege {
+  background-position-y: 616px;
+}
+.puissance-piege {
+  background-position-y: 643px;
+}
+.dommage {
+  background-position-y: 685px;
+}
+.crit {
+  background-position-y: 719px;
+}
+.tacle {
+  background-position-y: 756px;
+}
+.invocation {
+  background-position-y: 787px;
+}
+.fuite {
+  background-position-y: 827px;
+}
+.force {
+  background-position-y: 850px;
+}
+.intelligence {
+  background-position-y: 882px;
+}
+.sagesse {
+  background-position-y: 912px;
+}
+.vita-2 {
+  background-position-y: 943px;
+}
+.prospection {
+  background-position-y: 977px;
+}
+.pa {
+  background-position-y: 1007px;
+}
+.initiative {
+  background-position-y: 1039x;
+}
+.agilite {
+  background-position-y: 1071px;
+}
+.po {
+  background-position-y: 1103px;
+}
+.chance {
+  background-position-y: 1136px;
+}
+.pm {
+  background-position-y: 1167px;
+}

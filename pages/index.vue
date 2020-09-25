@@ -1,72 +1,84 @@
 <template>
-  <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        dofus_armory
-      </h1>
-      <h2 class="subtitle">
-        My classy Nuxt.js project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
+  <div>
+    <Navbar />  
+    <button @click="searchMode = !searchMode">CHANGE</button>
+    <div class="row">
+      <div class="offset-1"></div>
+      <MainCharacteristic v-if="!searchMode" />  
+      <StuffPresentation :search-mode="searchMode" />
+      <OtherCharacteristic v-if="!searchMode" />
+      <SearchPage v-if="searchMode" />
     </div>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import Navbar from '~/components/Navbar'
+import MainCharacteristic from '~/components/MainCharacteristic'
+import StuffPresentation from '~/components/StuffPresentation'
+import OtherCharacteristic from '~/components/OtherCharacteristic'
+import SearchPage from '~/components/SearchPage'
 
 export default {
   components: {
-    Logo
-  }
+    Navbar,
+    MainCharacteristic,
+    StuffPresentation,
+    OtherCharacteristic,
+    SearchPage
+  },
+  data() {
+    return {
+      searchMode: false
+    }
+  },
+  async mounted() {
+    // this.allItems = await this.getWeapons()
+    // console.log('la reponse laa:', this.allItems)
+    // console.log(this.$store.getters['items/getHello'])
+    // this.$store.dispatch('items/addMore')
+    // console.log(this.$store.getters['items/getHello'])
+
+
+    await this.getAllData()
+    console.log(this.$store.state.items)
+  },
+  methods: {
+    getAllData() {
+      Promise.all([
+        this.$axios.$get('https://fr.dofus.dofapi.fr/equipments'),
+        this.$axios.$get('https://fr.dofus.dofapi.fr/weapons'),
+        this.$axios.$get('https://fr.dofus.dofapi.fr/sets'),
+        this.$axios.$get('https://fr.dofus.dofapi.fr/pets'),
+        this.$axios.$get('https://fr.dofus.dofapi.fr/mounts'),
+      ]).then((response) => {
+        const items = {
+          equipments: response[0],
+          weapons: response[1],
+          sets: response[2],
+          pets: response[3],
+          mounts: response[4],
+        }
+        this.$store.commit('items/loadItems', items)
+      });
+    }
+  },
 }
 </script>
 
 <style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
+  body {
+    font-family: Raleway;
+  }
+  .bg-blue {
+    background-color: #0066FF;
+  }
+  .text-blue {
+    color: #0066FF;
+  }
+  .box {
+    background-color: white;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+  }
 </style>

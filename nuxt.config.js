@@ -12,7 +12,8 @@ export default {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { href: 'https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700&display=swap', rel: 'stylesheet' }
     ]
   },
   /*
@@ -23,6 +24,7 @@ export default {
   ** Global CSS
   */
   css: [
+    '@/assets/css/app.css'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -40,7 +42,13 @@ export default {
   modules: [
     // Doc: https://bootstrap-vue.js.org
     'bootstrap-vue/nuxt',
+    // https://axios.nuxtjs.org/setup
+    '@nuxtjs/axios',
   ],
+
+  axios: {
+    // proxyHeaders: false
+  },
   /*
   ** Build configuration
   */
